@@ -10,7 +10,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "qla/crud": "^0.1.0"
+        "qla/crud": "^0.1.0",
+        "kodeine/laravel-acl": "~1.0@dev"
     },
     "autoload": {
         "psr-4": {
