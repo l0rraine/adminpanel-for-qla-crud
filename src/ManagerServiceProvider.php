@@ -47,6 +47,6 @@ class ManagerServiceProvider extends ServiceProvider
     {
         $this->setupRoutes($this->app->router);
 
-        $this->app->register('Kodeine\Acl\AclServiceProvider');
+//        $this->app->register('Kodeine\Acl\AclServiceProvider');
     }
 }
