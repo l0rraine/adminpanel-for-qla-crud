@@ -37,7 +37,6 @@
             <b class="arrow"></b>
 
             <ul class="submenu">
-                @permission('view.article-channel')
                 @if(Route::has('Crud.Channel.index'))
                     <li class="">
                         <a id="menu_8" href="javascript:void(0)" data-url="{{ route('Crud.Channel.index') }}">
