@@ -1,3 +1,4 @@
+@if(Route::has('Article.index'))
 <ul class="nav nav-list">
     <li class="">
         <a href="#" class="dropdown-toggle">
@@ -23,7 +24,7 @@
         </ul>
     </li>
 </ul>
-
+@endif
 @if(Route::has('Crud.Channel.index') || Route::has( 'Crud.User.index') || Route::has('Crud.Dep.index') || Route::has('Crud.Role.index'))
     <ul class="nav nav-list">
         <!--管理模块-->
