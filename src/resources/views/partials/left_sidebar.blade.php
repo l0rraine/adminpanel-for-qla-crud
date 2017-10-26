@@ -1,4 +1,3 @@
-@permission('list.article')
 <ul class="nav nav-list">
     <li class="">
         <a href="#" class="dropdown-toggle">
@@ -24,8 +23,7 @@
         </ul>
     </li>
 </ul>
-@endpermission
-@permission('view.article-channel|list.user|list.department|list.role')
+
 @if(Route::has('Crud.Channel.index') || Route::has( 'Crud.User.index') || Route::has('Crud.Dep.index') || Route::has('Crud.Role.index'))
     <ul class="nav nav-list">
         <!--管理模块-->
@@ -50,8 +48,6 @@
                         <b class="arrow"></b>
                     </li>
                 @endif
-                @endpermission
-                @permission('list.user')
                 @if(Route::has('Crud.User.index'))
                     <li class="">
                         <a id="menu_9" href="javascript:void(0)" data-url="{{ route('Crud.User.index') }}">
@@ -62,8 +58,6 @@
                         <b class="arrow"></b>
                     </li>
                 @endif
-                @endpermission
-                @permission('list.department')
                 @if(Route::has('Crud.Dep.index'))
                     <li class="">
                         <a id="menu_10" href="javascript:void(0)" data-url="{{ route('Crud.Dep.index') }}">
@@ -74,8 +68,6 @@
                         <b class="arrow"></b>
                     </li>
                 @endif
-                @endpermission
-                @permission('list.role')
                 @if(Route::has('Crud.Role.index'))
                     <li class="">
                         <a id="menu_11" href="javascript:void(0)" data-url="{{ route('Crud.Role.index') }}">
@@ -86,10 +78,8 @@
                         <b class="arrow"></b>
                     </li>
                 @endif
-                @endpermission
             </ul>
         </li><!-- /管理模块 -->
 
     </ul><!-- /.nav-list -->
 @endif
-@endpermission
