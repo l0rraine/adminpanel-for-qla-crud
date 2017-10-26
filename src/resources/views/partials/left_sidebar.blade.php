@@ -25,7 +25,10 @@
     </li>
 </ul>
 @endif
-@if(Route::has('Crud.Channel.index') || Route::has( 'Crud.User.index') || Route::has('Crud.Dep.index') || Route::has('Crud.Role.index'))
+@if(Route::has('Crud.Channel.index') ||
+    Route::has( 'Crud.User.index') ||
+    Route::has(config('qla.depcrud.route_name_prefix', 'Crud.Dep') . '.index') ||
+    Route::has('Crud.Role.index'))
     <ul class="nav nav-list">
         <!--管理模块-->
         <li class="">
@@ -58,7 +61,7 @@
                         <b class="arrow"></b>
                     </li>
                 @endif
-                @if(Route::has('Crud.Dep.index'))
+                @if(Route::has(config('qla.depcrud.route_name_prefix', 'Crud.Dep') . '.index'))
                     <li class="">
                         <a id="menu_10" href="javascript:void(0)" data-url="{{ route('Crud.Dep.index') }}">
                             <i class="menu-icon2 icon-department"></i>
