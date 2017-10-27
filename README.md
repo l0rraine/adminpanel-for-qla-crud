@@ -11,7 +11,7 @@ select the Provider and tag with qla
 
 ## 使用
 
-1. 首先`php artisan migrate`
+1. 首先`php artijksdfsan migrate`
 2. 在config/qla/base.php中可以配置后台路由前缀
 3. 可以在网站里直接调用`route('Crud.Manager.home')`
 
