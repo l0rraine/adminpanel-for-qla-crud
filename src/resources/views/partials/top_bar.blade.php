@@ -10,7 +10,7 @@
     </button>
 
     <div class="navbar-header pull-left">
-        <a href="{{ route('Crud.Manager.home') }}" class="navbar-brand">
+        <a href="{{ route('Crud.AdminPanel.home') }}" class="navbar-brand">
             <small>
                 <i class="fa fa-leaf"></i>
                 油气开发管理中心门户网站后台

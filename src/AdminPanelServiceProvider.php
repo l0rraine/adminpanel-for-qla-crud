@@ -1,11 +1,11 @@
 <?php
 
-namespace Qla\Manager;
+namespace Qla\AdminPanel;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
-class ManagerServiceProvider extends ServiceProvider
+class AdminPanelServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -16,13 +16,13 @@ class ManagerServiceProvider extends ServiceProvider
     {
         // LOAD THE VIEWS
         // - first the published views (in case they have any changes)
-        $this->loadViewsFrom(resource_path('views/vendor/qla/manager'), 'manager');
+        $this->loadViewsFrom(resource_path('views/vendor/qla/adminpanel'), 'adminpanel');
         // - then the stock views that come with the package, in case a published view might be missing
-        $this->loadViewsFrom(realpath(__DIR__.'/resources/views'), 'manager');
+        $this->loadViewsFrom(realpath(__DIR__.'/resources/views'), 'adminpanel');
 
 
         $this->publishes([
-            __DIR__.'/resources/views' => resource_path('views/vendor/qla/manager'),
+            __DIR__.'/resources/views' => resource_path('views/vendor/qla/adminpanel'),
             __DIR__.'/public' => public_path('vendor/qla'),
         ], 'qla');
 
@@ -30,9 +30,9 @@ class ManagerServiceProvider extends ServiceProvider
 
     public function setupRoutes(Router $router)
     {
-        $router->group(['namespace' => 'Qla\Manager\app\Http\Controllers'], function ($router) {
-            \Route::group(['prefix' => config('qla.base.route_prefix', 'manager'), 'middleware' => config('qla.base.admin_auth_middleware',['web'])], function () {
-                \Route::get('/', 'ManagerController@getIndex')->name('Crud.Manager.home');
+        $router->group(['namespace' => 'Qla\AdminPanel\app\Http\Controllers'], function ($router) {
+            \Route::group(['prefix' => config('qla.base.route_prefix', 'admin'), 'middleware' => config('qla.base.admin_auth_middleware',['web'])], function () {
+                \Route::get('/', 'AdminPanelController@getIndex')->name('Crud.AdminPanel.home');
             });
         });
     }

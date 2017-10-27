@@ -1,5 +1,5 @@
 
-@extends('manager::layouts.main')
+@extends('adminpanel::layouts.main')
 
 
 @section('content')

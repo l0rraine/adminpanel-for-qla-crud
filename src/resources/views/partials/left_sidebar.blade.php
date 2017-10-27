@@ -63,7 +63,7 @@
                 @endif
                 @if(Route::has(config('qla.depcrud.route_name_prefix', 'Crud.Dep') . '.index'))
                     <li class="">
-                        <a id="menu_10" href="javascript:void(0)" data-url="{{ route('Crud.Dep.index') }}">
+                        <a id="menu_10" href="javascript:void(0)" data-url="{{ route(config('qla.depcrud.route_name_prefix', 'Crud.Dep') . '.index') }}">
                             <i class="menu-icon2 icon-department"></i>
                             <span class="menu-text">单位</span>
                         </a>

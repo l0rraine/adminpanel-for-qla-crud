@@ -60,7 +60,7 @@
 <![endif]-->
 <!-- BEGIN HEADER -->
 <div id="navbar" class="navbar navbar-default          ace-save-state">
-    @include('manager::partials.top_bar')
+    @include('adminpanel::partials.top_bar')
 </div>
 <!-- END HEADER -->
 <div class="main-container ace-save-state" id="main-container">
@@ -80,7 +80,7 @@
             }
         </script>
 
-        @include('manager::partials.left_sidebar')
+        @include('adminpanel::partials.left_sidebar')
 
         <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
             <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state"

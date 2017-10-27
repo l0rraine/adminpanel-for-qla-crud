@@ -1,6 +1,6 @@
 {
-    "name": "qla/manager",
-    "description": "package for manager things",
+    "name": "qla/adminpanel",
+    "description": "package for qla admin panel things",
     "license": "MIT",
     "authors": [
         {
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Qla\\Manager\\": "src"
+            "Qla\\AdminPanel\\": "src"
         }
     }
 }
