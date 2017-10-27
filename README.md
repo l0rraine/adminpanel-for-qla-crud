@@ -1,10 +1,10 @@
-# Qla\Manager
+# Qla\AdminPanel
 Qla crud里的后台管理模块，需要 laravel 5.x。
 
 ## 安装
 
 ```
-composer require qla/manager
+composer require qla/adminpanel
 php artisan vendor:publish
 select the Provider and tag with qla
 ```
