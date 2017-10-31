@@ -21,9 +21,16 @@ class AdminPanelServiceProvider extends ServiceProvider
         $this->loadViewsFrom(realpath(__DIR__.'/resources/views'), 'adminpanel');
 
 
+        // LOAD THE CONFIG
+        $this->mergeConfigFrom(
+            __DIR__ . '/config/qla/adminpanel.php', 'qla.adminpanel'
+        );
+
+
         $this->publishes([
             __DIR__.'/resources/views' => resource_path('views/vendor/qla/adminpanel'),
             __DIR__.'/public' => public_path('vendor/qla'),
+            __DIR__.'/config/qla' => config_path('qla'),
         ], 'qla');
 
     }

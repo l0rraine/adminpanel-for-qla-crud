@@ -13,7 +13,7 @@
         <a href="{{ route('Crud.AdminPanel.home') }}" class="navbar-brand">
             <small>
                 <i class="fa fa-leaf"></i>
-                油气开发管理中心门户网站后台
+                {{ config('qla.adminpanel.title') }}
             </small>
         </a>
     </div>

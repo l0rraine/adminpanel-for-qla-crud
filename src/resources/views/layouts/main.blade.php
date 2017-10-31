@@ -9,7 +9,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <title>油气开发管理中心门户网站后台管理</title>
+    <title>{{ config('qla.adminpanel.title') }}</title>
 
     <link rel="stylesheet" href="{{ asset('vendor/qla/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('vendor/qla/css/font-awesome.min.css')}}"/>

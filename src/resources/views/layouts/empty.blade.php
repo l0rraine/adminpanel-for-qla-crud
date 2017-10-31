@@ -11,25 +11,25 @@
 
     @stack('css')
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('vendor/qla/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('vendor/qla/css/font-awesome.min.css')}}"/>
 
-    <link rel="stylesheet" href="{{ asset('css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style"/>
+    <link rel="stylesheet" href="{{ asset('vendor/qla/css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style"/>
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="{{ asset('css/ace-part2.min.css') }}" class="ace-main-stylesheet"/>
+    <link rel="stylesheet" href="{{ asset('vendor/qla/css/ace-part2.min.css') }}" class="ace-main-stylesheet"/>
     <![endif]-->
-    <link rel="stylesheet" href="{{ asset('css/ace-skins.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('vendor/qla/css/ace-skins.min.css') }}"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="{{ asset('css/ace-ie.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('vendor/qla/css/ace-ie.min.css') }}"/>
     <![endif]-->
 
-    <script src="{{ asset('js/vendor/ace/ace-extra.min.js') }}"></script>
+    <script src="{{ asset('vendor/qla/js/ace/ace-extra.min.js') }}"></script>
 
     <!--[if lt IE 8]>
-    <script src="{{ asset('js/vendor/respond-1.4.2.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/html5shiv-3.7.3.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/placeholders-4.0.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/qla/js/respond-1.4.2.min.js') }}"></script>
+    <script src="{{ asset('vendor/qla/js/html5shiv-3.7.3.min.js') }}"></script>
+    <script src="{{ asset('vendor/qla/js/placeholders-4.0.1.min.js') }}"></script>
     <![endif]-->
 
 
@@ -74,11 +74,25 @@
     </div>
 </div>
 
-@include('partials.scripts.jquery')
-@include('partials.scripts.cookie')
+<!--[if IE]>
+<script>
+    window.jQuery ||  document.write('<script src="{{ asset('vendor/qla/js/jquery/jquery-1.12.4.min.js') }}"><\/script>')
+</script>
+<![endif]-->
+
+<script>
+    window.jQuery || document.write('<script src="{{ asset('vendor/qla/js/jquery/jquery-2.1.4.min.js') }}"><\/script>')
+    if('ontouchstart' in document.documentElement)
+        document.write('<script src="{{ asset('vendor/qla/js/jquery/jquery.mobile.custom.min.js') }}" ><\/script>)');
+</script>
+
+<script src="{{ asset('vendor/qla/js/js.cookie-2.1.4.min.js') }}"></script>
 @stack('pre_js')
-@include('partials.scripts.bootstrap')
-@include('partials.scripts.ace')
+<script src="{{ asset('vendor/qla/js/bootstrap/bootstrap.min.js') }}"></script>
+
+<script src="{{ asset('vendor/qla/js/ace/ace-elements.min.js') }}"></script>
+<script src="{{ asset('vendor/qla/js/ace/ace.min.js') }}"></script>
+
 <script type="text/javascript">
     function resizeFrame() {
         if (top !== window) {
