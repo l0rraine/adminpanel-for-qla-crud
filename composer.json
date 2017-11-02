@@ -10,7 +10,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "qla/crud": "^0.1.0"
+        "qla/crud": "^0.1.0",
+        "qla/customldap": "^0.1.0"
     },
     "autoload": {
         "psr-4": {

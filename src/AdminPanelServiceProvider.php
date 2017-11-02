@@ -4,6 +4,7 @@ namespace Qla\AdminPanel;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Qla\AdminPanel\app\Exceptions\CustomHandler;
 
 class AdminPanelServiceProvider extends ServiceProvider
 {
@@ -14,11 +15,15 @@ class AdminPanelServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        app('router')->aliasMiddleware('admin.referer', 'Qla\AdminPanel\app\Http\Middleware\SetAdminReferer');
+        app('router')->aliasMiddleware('admin.auth', 'Qla\AdminPanel\app\Http\Middleware\Authenticate');
+
         // LOAD THE VIEWS
         // - first the published views (in case they have any changes)
         $this->loadViewsFrom(resource_path('views/vendor/qla/adminpanel'), 'adminpanel');
         // - then the stock views that come with the package, in case a published view might be missing
-        $this->loadViewsFrom(realpath(__DIR__.'/resources/views'), 'adminpanel');
+        $this->loadViewsFrom(realpath(__DIR__ . '/resources/views'), 'adminpanel');
 
 
         // LOAD THE CONFIG
@@ -28,20 +33,28 @@ class AdminPanelServiceProvider extends ServiceProvider
 
 
         $this->publishes([
-            __DIR__.'/resources/views' => resource_path('views/vendor/qla/adminpanel'),
-            __DIR__.'/public' => public_path('vendor/qla'),
-            __DIR__.'/config/qla' => config_path('qla'),
+            __DIR__ . '/resources/views' => resource_path('views/vendor/qla/adminpanel'),
+            __DIR__ . '/public' => public_path('vendor/qla'),
+            __DIR__ . '/config/qla' => config_path('qla'),
         ], 'qla');
 
     }
 
-    public function setupRoutes(Router $router)
+    public static function setupRoutes()
     {
-        $router->group(['namespace' => 'Qla\AdminPanel\app\Http\Controllers'], function ($router) {
-            \Route::group(['prefix' => config('qla.base.route_prefix', 'admin'), 'middleware' => config('qla.base.admin_auth_middleware',['web'])], function () {
-                \Route::get('/', 'AdminPanelController@getIndex')->name('Crud.AdminPanel.home');
+        $router = app('router');
+
+        $router->group([
+            'namespace' => '\Qla\AdminPanel\app\Http\Controllers',
+            'middleware' => config('qla.adminpanel.admin_auth_middleware'),
+            'prefix' => config('qla.adminpanel.url_prefix')],
+            function () use ($router) {
+
+                $router->get('/', 'AdminPanelController@getIndex')->name('Crud.AdminPanel.home');
+
             });
-        });
+
+
     }
 
 
@@ -52,7 +65,16 @@ class AdminPanelServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->setupRoutes($this->app->router);
+        $this->setupRoutes();
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('AdminPanel', \Qla\AdminPanel\AdminPanelServiceProvider::class);
+
+
+//        \App::singleton(
+//
+//            \Qla\AdminPanel\app\Exceptions\Handler::class
+//        );
+
 
 //        $this->app->register('Kodeine\Acl\AclServiceProvider');
     }
