@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/qla/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('vendor/qla/css/font-awesome.min.css')}}"/>
 
-    <link rel="stylesheet" href="{{ asset('vendor/qla/css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style"/>
+    <link rel="stylesheet" href="{{ asset('vendor/qla/css/ace.min.css') }}" class="ace-main-stylesheet"
+          id="main-ace-style"/>
     <link rel="stylesheet" href="{{ asset('vendor/qla/css/icomoon.css')}}"/>
 
     <!--[if lte IE 9]>
@@ -41,8 +42,8 @@
         }
 
         .nav-list > li .submenu > li a > .menu-icon2 {
-            display:inline-block !important;
-            font-size:14px;
+            display: inline-block !important;
+            font-size: 14px;
         }
 
     </style>
@@ -80,7 +81,7 @@
             }
         </script>
 
-        @include('adminpanel::partials.left_sidebar')
+        @include(config('qla.adminpanel.left_side_bar_include_file'))
 
         <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
             <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state"
@@ -103,7 +104,7 @@
         <div class="footer-inner">
             <div class="footer-content">
 						<span class="small">
-							<span class="blue bolder">勘探开发研究院计算机技术研究室</span>
+							<span class="blue bolder">{{ config('adminpanel.footer_copyright') }}</span>
 							&copy; 2017
 						</span>
 
@@ -122,13 +123,17 @@
 <!-- jquery scripts -->
 <!--[if IE]>
 <script>
-    window.jQuery ||  document.write('<script src="{{ asset('vendor/qla/js/jquery/jquery-1.12.4.min.js') }}"><\/script>')
+    window.jQuery || document.write('<script src="{{ asset('
+    vendor / qla / js / jquery / jquery - 1.12
+    .4.min.js
+    ') }}"><\/script>'
+    )
 </script>
 <![endif]-->
 
 <script>
     window.jQuery || document.write('<script src="{{ asset('vendor/qla/js/jquery/jquery-2.1.4.min.js') }}"><\/script>')
-    if('ontouchstart' in document.documentElement)
+    if ('ontouchstart' in document.documentElement)
         document.write('<script src="{{ asset('vendor/qla/js/jquery/jquery.mobile.custom.min.js') }}" ><\/script>');
 </script>
 
@@ -175,7 +180,7 @@
             setTitleAndPath(target);
         });
 
-        $(window).resize(function(){
+        $(window).resize(function () {
             resizeIframe();
         });
 
@@ -184,7 +189,7 @@
     function setTitleAndPath(target) {
         var path = $(target).data("url");
         if (path !== "" && path !== null && path !== undefined) {
-            $('#sidebar ul.nav-show').css('display','none');
+            $('#sidebar ul.nav-show').css('display', 'none');
             $('#sidebar ul').children('li').removeClass("active").removeClass("open");
             $(target).parents("li").siblings().removeClass("active");
             $(target).parents("li").siblings().removeClass("open");
@@ -204,7 +209,8 @@
             setMainContent(path, "");
         }
     }
-    function resizeIframe(){
+
+    function resizeIframe() {
         $("#iframe", document).load(function () {
             var bodyH = $(this).contents().find("body").get(0).scrollHeight,
                 htmlH = $(this).contents().find("html").get(0).scrollHeight,
