@@ -122,13 +122,7 @@
 
 <!-- jquery scripts -->
 <!--[if IE]>
-<script>
-    window.jQuery || document.write('<script src="{{ asset('
-    vendor / qla / js / jquery / jquery - 1.12
-    .4.min.js
-    ') }}"><\/script>'
-    )
-</script>
+<script src="{{ asset('vendor/qla/js/jquery/jquery-1.12.4.min.js') }}"></script>
 <![endif]-->
 
 <script>
